@@ -1,0 +1,17 @@
+{
+  "status": "true",
+  "code": "200",
+  "message": "We have sent a verification link to your email, kindly verify to login",
+  "data": {
+    "user_auth": "",
+    "user_id": "1",
+    "user_firstName": "Prakhar",
+    "user_lastName": "Mathur",
+    "user_name": "prkmathur",
+    "user_email": "prktest@yopmail.com",
+    "user_phone_no": "9828049567",
+    "device_type": "android",
+    "user_status": "1",
+    "is_verified": 0
+    }
+}

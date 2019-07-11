@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_settings"
+    app:startDestination="@id/settingFragment">
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.app.thenhpattern.view.main.SettingFragment"
+        android:label="@string/label_settings"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_profileFragment"
+            app:destination="@id/profileFragment"  app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_settingFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment"  app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_settingFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.app.thenhpattern.view.main.setting.ProfileFragment"
+        android:label="@string/label_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.app.thenhpattern.view.main.setting.WebViewFragment"
+        android:label="@string/label_link"
+        tools:layout="@layout/fragment_web_view" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.app.thenhpattern.view.main.setting.ChangePasswordFragment"
+        android:label="@string/label_change_password"
+        tools:layout="@layout/fragment_change_password" />
+</navigation>

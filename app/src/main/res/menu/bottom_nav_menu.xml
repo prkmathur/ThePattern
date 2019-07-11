@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_graph_home"
+        android:icon="@drawable/ic_home_interface"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/nav_graph_job"
+        android:icon="@drawable/ic_working_with_laptop"
+        android:title="@string/title_jobs" />
+
+    <item
+        android:id="@+id/nav_graph_notifications"
+        android:icon="@drawable/ic_turn_notifications_on"
+        android:title="@string/title_notifications" />
+
+    <item
+        android:id="@+id/nav_graph_settings"
+        android:icon="@drawable/ic_repairing_service"
+        android:title="@string/title_settings" />
+
+</menu>
