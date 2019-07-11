@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:bind="http://schemas.android.com/apk/res-auto">
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -26,7 +25,6 @@
                 app:contentInsetEnd="0dp">
 
             </com.app.thenhpattern.util.Toolbar>
-
         </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout

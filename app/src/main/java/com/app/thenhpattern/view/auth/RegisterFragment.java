@@ -21,7 +21,7 @@ import com.app.thenhpattern.util.Toolbar;
 import com.app.thenhpattern.viewmodel.AuthViewModel;
 import com.app.thenhpattern.viewmodel.auth.RegisterViewModel;
 
-public class RegisterFragment extends BaseFragment{
+public class RegisterFragment extends BaseFragment implements View.OnClickListener {
 
     private RegisterViewModel registerViewModel;
     private AuthViewModel authViewModel;
@@ -48,7 +48,7 @@ public class RegisterFragment extends BaseFragment{
         navController = getNavController();
         fragmentRegisterBinding = (FragmentRegisterBinding) getBinding();
         fragmentRegisterBinding.setData(registerViewModel);
-
+        fragmentRegisterBinding.backBtn.setOnClickListener(this);
     }
 
     @Override
@@ -97,4 +97,11 @@ public class RegisterFragment extends BaseFragment{
         }
     };
 
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == fragmentRegisterBinding.backBtn.getId()){
+            if(navController!= null)
+                navController.navigateUp();
+        }
+    }
 }

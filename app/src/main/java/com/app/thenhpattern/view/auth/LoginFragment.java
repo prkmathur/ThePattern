@@ -54,6 +54,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         fragmentLoginBinding.setData(loginViewModel);
         fragmentLoginBinding.btnRegister.setOnClickListener(this);
         fragmentLoginBinding.btnLogin.setOnClickListener(this);
+        fragmentLoginBinding.txtForget.setOnClickListener(this);
     }
 
     @Override
@@ -88,7 +89,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         if(v.getId() == R.id.btn_register){
             navController.navigate(R.id.action_loginFragment_to_registerFragment);
         }else if (v.getId() == R.id.btn_login){
-
             if(fragmentLoginBinding.edtEmail.getText() == null || fragmentLoginBinding.edtEmail.getText().toString().trim().length() == 0){
                 fragmentLoginBinding.edtEmail.setError(getActivity().getString(R.string.error_email));
             }else if(fragmentLoginBinding.edtPassword.getText() == null || fragmentLoginBinding.edtPassword.getText().toString().trim().length() == 0){
@@ -96,6 +96,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             }else{
                 loginViewModel.requestLogin();
             }
+        }else if(v.getId() ==  R.id.txt_forget){
+            navController.navigate(R.id.action_loginFragment_to_forgetPasswordFragment);
         }
     }
 
