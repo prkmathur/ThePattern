@@ -60,6 +60,8 @@ public class ForgetPasswordFragment extends BaseFragment implements View.OnClick
     public void onClick(View view) {
         if(view.getId() == binding.backBtn.getId()){
             navController.navigateUp();
+        }else if(view.getId() == binding.forgetSubmit.getId()){
+            navController.navigate(R.id.action_forgetPasswordFragment_to_verificationFragment);
         }
     }
 }

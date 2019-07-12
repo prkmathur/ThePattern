@@ -34,7 +34,6 @@
                 android:text="@={data.user.firstName}"
                 android:textColor="@color/edt_text_color"
                 android:textColorHint="@color/edt_hint_color"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
