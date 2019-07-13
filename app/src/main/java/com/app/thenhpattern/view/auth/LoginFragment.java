@@ -3,10 +3,8 @@ package com.app.thenhpattern.view.auth;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
-
 import com.app.thenhpattern.R;
 import com.app.thenhpattern.databinding.FragmentLoginBinding;
 import com.app.thenhpattern.model.vo.User;
@@ -22,7 +20,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     private LoginViewModel loginViewModel;
     private AuthViewModel authViewModel;
     private NavController navController;
-    private FragmentLoginBinding fragmentLoginBinding;
+    private FragmentLoginBinding binding;
 
     public LoginFragment() {}
 
@@ -50,11 +48,11 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController= getNavController();
-        fragmentLoginBinding = (FragmentLoginBinding) getBinding();
-        fragmentLoginBinding.setData(loginViewModel);
-        fragmentLoginBinding.btnRegister.setOnClickListener(this);
-        fragmentLoginBinding.btnLogin.setOnClickListener(this);
-        fragmentLoginBinding.txtForget.setOnClickListener(this);
+        binding = (FragmentLoginBinding) getBinding();
+        binding.setData(loginViewModel);
+        binding.btnRegister.setOnClickListener(this);
+        binding.btnLogin.setOnClickListener(this);
+        binding.txtForget.setOnClickListener(this);
     }
 
     @Override
@@ -89,12 +87,12 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         if(v.getId() == R.id.btn_register){
             navController.navigate(R.id.action_loginFragment_to_registerFragment);
         }else if (v.getId() == R.id.btn_login){
-            if(fragmentLoginBinding.edtEmail.getText() == null || fragmentLoginBinding.edtEmail.getText().toString().trim().length() == 0){
-                fragmentLoginBinding.edtEmail.setError(getActivity().getString(R.string.error_email));
-            }else if(fragmentLoginBinding.edtPassword.getText() == null || fragmentLoginBinding.edtPassword.getText().toString().trim().length() == 0){
-                fragmentLoginBinding.edtPassword.setError(getActivity().getString(R.string.error_password));
+            if(binding.edtEmail.getText() == null || binding.edtEmail.getText().toString().trim().length() == 0){
+                binding.edtEmail.setError(getActivity().getString(R.string.error_email));
+            }else if(binding.edtPassword.getText() == null || binding.edtPassword.getText().toString().trim().length() == 0){
+                binding.edtPassword.setError(getActivity().getString(R.string.error_password));
             }else{
-                loginViewModel.requestLogin();
+                loginUserRequest();
             }
         }else if(v.getId() ==  R.id.txt_forget){
             navController.navigate(R.id.action_loginFragment_to_forgetPasswordFragment);
@@ -108,10 +106,16 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             if (loginResponseBaseResponse.peekContent().isStatus()) {
                 authViewModel.setActivityChange();
             } else {
+                binding.loadingLayout.setVisibility(View.GONE);
                 Toast.makeText(getContext(), loginResponseBaseResponse.peekContent().getMessage(), Toast.LENGTH_LONG).show();
             }
         }
 
     };
+
+    private void loginUserRequest(){
+        binding.loadingLayout.setVisibility(View.VISIBLE);
+        loginViewModel.requestLogin();
+    }
 
 }

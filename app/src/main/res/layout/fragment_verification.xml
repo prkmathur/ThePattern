@@ -8,11 +8,12 @@
         name="data"
         type="com.app.thenhpattern.viewmodel.auth.VerificationViewModel" />
 </data>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:fillViewport="true"
+        android:layout_height="match_parent"
         android:background="@color/app_background"
-        android:layout_height="match_parent">
+        android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -44,31 +45,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/rect_text_edit"
                 android:onClick="@{()-> data.verifyUser()}"
                 android:text="Verify"
-                android:background="@drawable/rect_text_edit"
                 android:textAllCaps="false"
                 android:textColor="@color/btn_text_color"
 
                 app:layout_constraintEnd_toEndOf="@+id/edt_verification_code"
                 app:layout_constraintTop_toBottomOf="@+id/edt_verification_code" />
 
-            <ImageView
-                android:id="@+id/back_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:padding="15dp"
-                android:src="?attr/homeAsUpIndicator"
-                android:tint="@color/btn_text_color"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="Verification"
                 android:textColor="@color/txt_color"

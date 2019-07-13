@@ -3,13 +3,9 @@ package com.app.thenhpattern.view.auth;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-
-import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
+import androidx.navigation.NavOptions;
 
 import com.app.thenhpattern.R;
 import com.app.thenhpattern.databinding.FragmentRegisterBinding;
@@ -26,7 +22,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     private RegisterViewModel registerViewModel;
     private AuthViewModel authViewModel;
     private NavController navController;
-    private FragmentRegisterBinding fragmentRegisterBinding;
+    private FragmentRegisterBinding binding;
 
     public  RegisterFragment() {}
 
@@ -46,9 +42,10 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = getNavController();
-        fragmentRegisterBinding = (FragmentRegisterBinding) getBinding();
-        fragmentRegisterBinding.setData(registerViewModel);
-        fragmentRegisterBinding.backBtn.setOnClickListener(this);
+        binding = (FragmentRegisterBinding) getBinding();
+        binding.setData(registerViewModel);
+        binding.backBtn.setOnClickListener(this);
+        binding.btnSubmit.setOnClickListener(this);
     }
 
     @Override
@@ -90,8 +87,12 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
         if(currentUserBaseResponse.getContentIfNotHandled() != null) {
             if (currentUserBaseResponse.peekContent().isStatus()) {
-                authViewModel.setActivityChange();
+                navController.navigate(R.id.action_registerFragment_to_verificationFragment, null,
+                        new NavOptions.Builder()
+                                .setPopUpTo(R.id.registerFragment, true)
+                                .build());
             } else {
+                binding.loadingLayout.setVisibility(View.GONE);
                 Toast.makeText(getContext(), currentUserBaseResponse.peekContent().getMessage(), Toast.LENGTH_LONG).show();
             }
         }
@@ -99,9 +100,16 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == fragmentRegisterBinding.backBtn.getId()){
+        if(view.getId() == binding.backBtn.getId()){
             if(navController!= null)
                 navController.navigateUp();
+        }else if(view.getId() == binding.btnSubmit.getId()){
+            registerUserRequest();
         }
+    }
+
+    private void registerUserRequest() {
+        binding.loadingLayout.setVisibility(View.VISIBLE);
+        registerViewModel.registerUser();
     }
 }

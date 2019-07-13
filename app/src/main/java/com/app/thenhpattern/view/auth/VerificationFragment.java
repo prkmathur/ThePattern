@@ -18,13 +18,12 @@ import com.app.thenhpattern.viewmodel.AuthViewModel;
 import com.app.thenhpattern.viewmodel.auth.VerificationViewModel;
 
 
-
-public class VerificationFragment extends BaseFragment {
+public class VerificationFragment extends BaseFragment implements View.OnClickListener {
 
     private VerificationViewModel verificationViewModel;
     private AuthViewModel authViewModel;
     private NavController navController;
-    private FragmentVerificationBinding fragmentVerificationBinding;
+    private FragmentVerificationBinding binding;
 
     public VerificationFragment(){}
 
@@ -39,8 +38,8 @@ public class VerificationFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = getNavController();
-        fragmentVerificationBinding = (FragmentVerificationBinding) getBinding();
-        fragmentVerificationBinding.setData(verificationViewModel);
+        binding = (FragmentVerificationBinding) getBinding();
+        binding.setData(verificationViewModel);
     }
 
     @Override
@@ -94,4 +93,9 @@ public class VerificationFragment extends BaseFragment {
     private Observer<Event<BaseResponse<UserVerification.Response>>> observer = responseBaseResponse -> {
 
     };
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }

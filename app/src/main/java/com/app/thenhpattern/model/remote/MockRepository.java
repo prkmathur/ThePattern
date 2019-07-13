@@ -61,16 +61,25 @@ public class MockRepository implements DataSource {
 
             BaseResponse<User.CurrentUser> responseBaseResponse = gson.fromJson(response, collectionType);
 
-            if(responseBaseResponse.isStatus()){
-                if(sessionManager.setUser(responseBaseResponse.getData())){
-                    baseResponseMutableLiveData.setValue(new Event(responseBaseResponse));
-                }else{
-                    responseBaseResponse.setData(null);
-                    responseBaseResponse.setStatus(false);
-                    responseBaseResponse.setMessage(application.getApplicationContext().getString(R.string.PREF_COMMIT_ERROR));
-                    baseResponseMutableLiveData.setValue(new Event(responseBaseResponse));
+            new Thread(() -> {
+                try {
+                    Thread.sleep(5000);
+
+                    if(responseBaseResponse.isStatus()){
+                        if(sessionManager.setUser(responseBaseResponse.getData())){
+                            baseResponseMutableLiveData.postValue(new Event(responseBaseResponse));
+                        }else{
+                            responseBaseResponse.setData(null);
+                            responseBaseResponse.setStatus(false);
+                            responseBaseResponse.setMessage(application.getApplicationContext().getString(R.string.PREF_COMMIT_ERROR));
+                            baseResponseMutableLiveData.postValue(new Event(responseBaseResponse));
+                        }
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            }
+            }).start();
 
             return baseResponseMutableLiveData;
         }
@@ -80,6 +89,8 @@ public class MockRepository implements DataSource {
 
     @Override
     public LiveData<Event<BaseResponse<User.CurrentUser>>> getLoginUser(User.LoginRequest request) {
+
+
 
         MutableLiveData<Event<BaseResponse<User.CurrentUser>>> baseResponseMutableLiveData = new MutableLiveData<>();
 
@@ -93,16 +104,25 @@ public class MockRepository implements DataSource {
 
             BaseResponse<User.CurrentUser> responseBaseResponse = gson.fromJson(response, collectionType);
 
-            if(responseBaseResponse.isStatus()){
-                if(sessionManager.setUser(responseBaseResponse.getData())){
-                    baseResponseMutableLiveData.setValue(new Event(responseBaseResponse));
-                }else{
-                    responseBaseResponse.setData(null);
-                    responseBaseResponse.setStatus(false);
-                    responseBaseResponse.setMessage(application.getApplicationContext().getString(R.string.PREF_COMMIT_ERROR));
-                    baseResponseMutableLiveData.setValue(new Event(responseBaseResponse));
+            new Thread(() -> {
+                try {
+                    Thread.sleep(5000);
+                    if(responseBaseResponse.isStatus()){
+                        if(sessionManager.setUser(responseBaseResponse.getData())){
+                            baseResponseMutableLiveData.postValue(new Event(responseBaseResponse));
+                        }else{
+                            responseBaseResponse.setData(null);
+                            responseBaseResponse.setStatus(false);
+                            responseBaseResponse.setMessage(application.getApplicationContext().getString(R.string.PREF_COMMIT_ERROR));
+                            baseResponseMutableLiveData.postValue(new Event(responseBaseResponse));
+                        }
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-            }
+            }).start();
+
 
 
             return baseResponseMutableLiveData;

@@ -59,4 +59,5 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'jp.wasabeef:blurry:3.0.0'
 }
