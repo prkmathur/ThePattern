@@ -14,7 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.app.thenhpattern.view.MainActivity;
+import com.app.thenhpattern.view.navigator.CenterFragment;
+
 import javax.inject.Inject;
 import dagger.android.support.DaggerFragment;
 
@@ -43,8 +44,6 @@ public abstract class BaseFragment extends DaggerFragment {
             parentViewModel = ViewModelProviders.of(this.getActivity()).get(setParentViewModelClass());
         }
 
-        // This callback will only be called when MyFragment is at least Started.
-
         if(getBackCallback() != null){
             requireActivity().getOnBackPressedDispatcher().addCallback(this, getBackCallback());
         }
@@ -64,21 +63,26 @@ public abstract class BaseFragment extends DaggerFragment {
     public void onViewCreated(View view,Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Init the Nav Controller
+
         try {
             navController = Navigation.findNavController(view);
         }catch (Exception e){
             Log.d("BaseFragment","view does not have a NavController set");
         }
 
-        if(getActivity() instanceof MainActivity) {
-            if (((MainActivity) getActivity()).getToolbar() != null) {
-                toolbar = ((MainActivity) getActivity()).getToolbar();
-                if (toolbar != null) {
-                    initHeaderAction();
-                }
+        // Init the Toolbar
+
+        if(this.getParentFragment() != null && this.getParentFragment() instanceof CenterFragment){
+
+            CenterFragment parentFragment = ((CenterFragment)this.getParentFragment());
+
+            toolbar = parentFragment.getToolbar();
+
+            if (toolbar != null) {
+                initHeaderAction();
             }
         }
-
     }
 
     private void initHeaderAction(){

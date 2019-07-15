@@ -2,7 +2,6 @@ package com.app.thenhpattern.view.auth;
 
 
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
@@ -13,9 +12,12 @@ import com.app.thenhpattern.model.vo.UserVerification;
 import com.app.thenhpattern.util.BaseFragment;
 import com.app.thenhpattern.util.BaseResponse;
 import com.app.thenhpattern.util.Event;
+import com.app.thenhpattern.util.SessionManager;
 import com.app.thenhpattern.util.Toolbar;
 import com.app.thenhpattern.viewmodel.AuthViewModel;
 import com.app.thenhpattern.viewmodel.auth.VerificationViewModel;
+
+import javax.inject.Inject;
 
 
 public class VerificationFragment extends BaseFragment implements View.OnClickListener {
@@ -24,6 +26,9 @@ public class VerificationFragment extends BaseFragment implements View.OnClickLi
     private AuthViewModel authViewModel;
     private NavController navController;
     private FragmentVerificationBinding binding;
+
+    @Inject
+    SessionManager sessionManager;
 
     public VerificationFragment(){}
 
@@ -98,4 +103,5 @@ public class VerificationFragment extends BaseFragment implements View.OnClickLi
     public void onClick(View view) {
 
     }
+
 }

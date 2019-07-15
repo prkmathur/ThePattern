@@ -87,6 +87,7 @@ public class RegisterFragment extends BaseFragment implements View.OnClickListen
 
         if(currentUserBaseResponse.getContentIfNotHandled() != null) {
             if (currentUserBaseResponse.peekContent().isStatus()) {
+                navController.popBackStack(navController.getGraph().findNode(R.id.loginFragment).getId(),false);
                 navController.navigate(R.id.action_registerFragment_to_verificationFragment, null,
                         new NavOptions.Builder()
                                 .setPopUpTo(R.id.registerFragment, true)

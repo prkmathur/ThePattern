@@ -3,22 +3,20 @@ package com.app.thenhpattern.view.navigator;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 
 import com.app.thenhpattern.R;
 import com.app.thenhpattern.databinding.FragmentCenterBinding;
-import com.app.thenhpattern.databinding.FragmentLeftBinding;
 import com.app.thenhpattern.util.BaseFragment;
 import com.app.thenhpattern.util.NavigationExtension;
 import com.app.thenhpattern.util.Toolbar;
 import com.app.thenhpattern.viewmodel.PagerViewModel;
 import com.app.thenhpattern.viewmodel.navigator.CenterViewModel;
-import com.app.thenhpattern.viewmodel.navigator.LeftViewModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +30,7 @@ public class CenterFragment extends BaseFragment implements View.OnClickListener
     private FragmentCenterBinding binding;
     private PagerViewModel pagerViewModel;
     private NavController navController;
+    private Toolbar mToolbar;
 
     public CenterFragment() {}
 
@@ -46,13 +45,14 @@ public class CenterFragment extends BaseFragment implements View.OnClickListener
                         getActivity().getString(R.string.label_jobs),
                         getActivity().getString(R.string.label_notifications),
                         getActivity().getString(R.string.label_settings)));
-
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding = (FragmentCenterBinding) getBinding();
+        mToolbar = binding.appToolbar;
+        ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
 
     }
 
@@ -101,17 +101,17 @@ public class CenterFragment extends BaseFragment implements View.OnClickListener
             pagerViewModel.setNavController(navController);
 
             navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-                binding.appToolbar.setTitle(controller.getCurrentDestination().getLabel().toString());
-                binding.appToolbar.setMainVisibility(true);
+                mToolbar.setTitle(controller.getCurrentDestination().getLabel().toString());
+                mToolbar.setMainVisibility(true);
 
                 if (navigation.contains(controller.getCurrentDestination().getLabel())) {
-                    binding.appToolbar.setHasLeft(false);
-                    binding.appToolbar.setHasRight(true);
-                    binding.appToolbar.setRightClickListener(CenterFragment.this);
+                    mToolbar.setHasLeft(false);
+                    mToolbar.setHasRight(true);
+                    mToolbar.setRightClickListener(CenterFragment.this);
                 } else {
-                    binding.appToolbar.setHasLeft(true);
-                    binding.appToolbar.setHasRight(false);
-                    binding.appToolbar.setLeftClickListener(CenterFragment.this);
+                    mToolbar.setHasLeft(true);
+                    mToolbar.setHasRight(false);
+                    mToolbar.setLeftClickListener(CenterFragment.this);
 
                 }
             });
@@ -134,9 +134,7 @@ public class CenterFragment extends BaseFragment implements View.OnClickListener
     }
 
     @Override
-    public void setObservers() {
-
-    }
+    public void setObservers() { }
 
     @Override
     public void removeObservers() {
@@ -145,7 +143,7 @@ public class CenterFragment extends BaseFragment implements View.OnClickListener
 
     @Override
     public Toolbar getToolbar() {
-        return null;
+        return mToolbar;
     }
 
     @Override
@@ -171,4 +169,5 @@ public class CenterFragment extends BaseFragment implements View.OnClickListener
             pagerViewModel.setNavController(navController);
         }
     }
+
 }

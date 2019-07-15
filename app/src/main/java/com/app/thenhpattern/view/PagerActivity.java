@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.app.thenhpattern.databinding.ActivityViewPagerBinding;
 import com.app.thenhpattern.util.BaseActivity;
+import com.app.thenhpattern.util.SessionManager;
 import com.app.thenhpattern.view.navigator.CenterFragment;
 import com.app.thenhpattern.viewmodel.PagerViewModel;
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import com.app.thenhpattern.R;
 
+import javax.inject.Inject;
+
 public class PagerActivity extends BaseActivity {
 
     private ActivityViewPagerBinding activityViewPagerBinding;
@@ -23,6 +26,9 @@ public class PagerActivity extends BaseActivity {
     private PagerViewModel pagerViewModel;
     private NavHostFragment leftWing;
     private NavHostFragment rightWing;
+
+    @Inject
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +43,6 @@ public class PagerActivity extends BaseActivity {
         activityViewPagerBinding.viewPager.setAdapter(adapterViewPager);
 
         activityViewPagerBinding.viewPager.setCurrentItem(1);
-
-
 
     }
 
