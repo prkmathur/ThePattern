@@ -39,4 +39,9 @@
     <string name="create_account">Create Account</string>
     <string name="error_email">Enter Valid Email or Username</string>
     <string name="error_password">Enter Valid Password</string>
+    <string name="label_fragment_splash">fragment_splash</string>
+    <string name="label_fragment_login">fragment_login</string>
+    <string name="label_fragment_register">fragment_register</string>
+    <string name="label_fragment_verification">fragment_verification</string>
+    <string name="label_fragment_forget_password">fragment_forget_password</string>
 </resources>

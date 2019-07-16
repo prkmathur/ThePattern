@@ -3,8 +3,6 @@ package com.app.thenhpattern.di.modules.viewmodules.authviewmodules;
 import androidx.lifecycle.ViewModel;
 
 import com.app.thenhpattern.di.modules.ViewModelKey;
-import com.app.thenhpattern.viewmodel.AuthViewModel;
-import com.app.thenhpattern.viewmodel.MainViewModel;
 import com.app.thenhpattern.viewmodel.auth.SplashViewModel;
 
 import dagger.Binds;

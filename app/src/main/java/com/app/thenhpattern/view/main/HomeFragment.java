@@ -9,14 +9,12 @@ import com.app.thenhpattern.R;
 import com.app.thenhpattern.databinding.FragmentHomeBinding;
 import com.app.thenhpattern.util.BaseFragment;
 import com.app.thenhpattern.util.Toolbar;
-import com.app.thenhpattern.viewmodel.MainViewModel;
 import com.app.thenhpattern.viewmodel.main.HomeViewModel;
 
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private HomeViewModel homeViewModel;
-    private MainViewModel mainViewModel;
     private NavController navController;
     private FragmentHomeBinding fragmentHomeBinding;
 
@@ -27,7 +25,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         Log.d("Act: HomeFragment","onCreate");
         homeViewModel = (HomeViewModel) getViewModel();
-        mainViewModel = (MainViewModel) getParentViewModel();
     }
 
     @Override

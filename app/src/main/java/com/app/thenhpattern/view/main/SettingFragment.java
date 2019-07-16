@@ -18,7 +18,6 @@ import com.app.thenhpattern.util.BaseFragment;
 import com.app.thenhpattern.util.BaseResponse;
 import com.app.thenhpattern.util.Event;
 import com.app.thenhpattern.util.Toolbar;
-import com.app.thenhpattern.viewmodel.MainViewModel;
 import com.app.thenhpattern.viewmodel.PagerViewModel;
 import com.app.thenhpattern.viewmodel.main.SettingViewModel;
 

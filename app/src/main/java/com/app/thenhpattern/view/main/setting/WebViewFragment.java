@@ -7,9 +7,7 @@ import androidx.navigation.NavController;
 
 import com.app.thenhpattern.util.BaseFragment;
 import com.app.thenhpattern.R;
-import com.app.thenhpattern.util.BaseFragment;
 import com.app.thenhpattern.util.Toolbar;
-import com.app.thenhpattern.viewmodel.MainViewModel;
 import com.app.thenhpattern.viewmodel.main.setting.WebviewViewModel;
 
 

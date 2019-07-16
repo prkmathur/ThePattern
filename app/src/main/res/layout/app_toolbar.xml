@@ -7,7 +7,7 @@
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
-        tools:context=".view.MainActivity">
+        tools:context=".view.PagerActivity">
 
         <ImageView
             android:id="@+id/left_icon"

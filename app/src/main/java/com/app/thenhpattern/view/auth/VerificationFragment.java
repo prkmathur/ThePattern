@@ -1,6 +1,5 @@
 package com.app.thenhpattern.view.auth;
 
-
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;

@@ -138,7 +138,8 @@ public class PagerActivity extends BaseActivity {
                     activityViewPagerBinding.viewPager.setCurrentItem(1);
                 }
             }else{
-                navController.navigateUp();
+                    navController.navigateUp();
+
             }
 
         }else{

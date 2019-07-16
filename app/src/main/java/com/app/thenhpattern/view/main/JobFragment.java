@@ -12,8 +12,6 @@ import com.app.thenhpattern.R;
 import com.app.thenhpattern.databinding.FragmentJobsBinding;
 import com.app.thenhpattern.util.BaseFragment;
 import com.app.thenhpattern.util.Toolbar;
-import com.app.thenhpattern.viewmodel.MainViewModel;
-import com.app.thenhpattern.viewmodel.main.HomeViewModel;
 import com.app.thenhpattern.viewmodel.main.JobViewModel;
 
 
@@ -23,7 +21,6 @@ import com.app.thenhpattern.viewmodel.main.JobViewModel;
 public class JobFragment extends BaseFragment {
 
     private JobViewModel jobViewModel;
-    private MainViewModel mainViewModel;
     private NavController navController;
     private FragmentJobsBinding fragmentJobsBinding;
 
@@ -34,7 +31,6 @@ public class JobFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         Log.d("Act: JobFragment","onCreate");
         jobViewModel = (JobViewModel) getViewModel();
-        mainViewModel = (MainViewModel) getParentViewModel();
     }
 
     @Override

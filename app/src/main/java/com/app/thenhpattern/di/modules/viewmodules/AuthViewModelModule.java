@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.app.thenhpattern.di.modules.ViewModelKey;
 import com.app.thenhpattern.viewmodel.AuthViewModel;
-import com.app.thenhpattern.viewmodel.MainViewModel;
 
 import dagger.Binds;
 import dagger.Module;

@@ -23,7 +23,6 @@
                 <action android:name="android.intent.action.MAIN"></action>
             </intent-filter>
         </activity>
-        <activity android:name=".view.MainActivity" />
 
         <service android:name=".fcm.FCMService">
             <intent-filter>
